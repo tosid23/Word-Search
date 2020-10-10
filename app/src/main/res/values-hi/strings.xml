@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">शब्दों की खोज</string>
+    <string name="word_search">शब्दों की खोज</string>
+    <string name="indian_mythology_edition">भारतीय पौराणिक संस्करण</string>
+    <string name="play">शुरू</string>
+    <string name="ramayana">रामायण</string>
+    <string name="settings">Settings</string>
+    <string name="language">भाषा</string>
+</resources>

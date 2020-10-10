@@ -197,8 +197,12 @@ open class Prefs {
          * @see android.content.SharedPreferences.getString
          */
         @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-        fun getString(key: String, defValue: String): String? {
-            return getPreferences().getString(key, defValue)
+        fun getString(key: String, defValue: String): String {
+            getPreferences().getString(key, defValue)?.let {
+                return it
+            } ?: kotlin.run {
+                return defValue
+            }
         }
 
         /**
@@ -210,8 +214,12 @@ open class Prefs {
          * @see android.content.SharedPreferences.getString
          */
         @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-        fun getString(key: String): String? {
-            return getPreferences().getString(key, "")
+        fun getString(key: String): String {
+            getPreferences().getString(key, "")?.let {
+                return it
+            } ?: kotlin.run {
+                return ""
+            }
         }
 
         /**

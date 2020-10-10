@@ -10,7 +10,7 @@
     tools:context=".features.home.HomeFragment">
 
     <ImageView
-        android:id="@+id/settings"
+        android:id="@+id/home_settings"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:padding="16dp"
@@ -24,91 +24,93 @@
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/word_search_text"
+        android:id="@+id/home_word_search_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_bold"
-        android:text="Word Search"
+        android:text="@string/word_search"
         android:textAllCaps="true"
         android:textColor="@color/md_blue_700"
         android:textSize="42sp"
-        app:layout_constraintBottom_toTopOf="@+id/indian_mythology_edition_text"
+        app:layout_constraintBottom_toTopOf="@+id/home_indian_mythology_edition_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/indian_mythology_edition_text"
+        android:id="@+id/home_indian_mythology_edition_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_bold"
-        android:text="INDIAN MYTHOLOGY EDITION "
+        android:text="@string/indian_mythology_edition"
         android:textAlignment="center"
+        android:textAllCaps="true"
         android:textColor="@color/md_cyan_400"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/play_view"
+        app:layout_constraintBottom_toTopOf="@+id/home_play_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintVertical_bias="0.7" />
 
-    <View
-        android:id="@+id/play_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/rounded_r5_blue700_bg_black_border"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ramayana_text"
-        app:layout_constraintEnd_toEndOf="@+id/ramayana_text"
-        app:layout_constraintStart_toStartOf="@+id/ramayana_text"
-        app:layout_constraintTop_toTopOf="@+id/play_text" />
-
-    <TextView
-        android:id="@+id/play_text"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_play_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/quicksand_bold"
-        android:paddingTop="10dp"
-        android:text="Play"
-        android:textAllCaps="true"
-        android:textColor="@color/md_white_1000"
-        android:textSize="32sp"
+        android:background="@drawable/rounded_r15_blue700_bg_black_border"
+        android:paddingStart="48dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="48dp"
+        android:paddingBottom="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/ramayana_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:fontFamily="@font/quicksand_bold"
-        android:paddingBottom="16dp"
-        android:text="Ramayana"
-        android:textAlignment="center"
-        android:textColor="@color/md_white_1000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/play_text"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/home_play_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/play"
+            android:textAllCaps="true"
+            android:textColor="@color/md_white_1000"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/home_ramayana_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/ramayana"
+            android:textAlignment="center"
+            android:textColor="@color/md_white_1000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_play_text"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageView
-        android:id="@+id/god_blue"
+        android:id="@+id/home_god_blue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/god_blue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/god_yellow"
+        app:layout_constraintEnd_toStartOf="@+id/home_god_yellow"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -117,49 +119,176 @@
         tools:layout_width="100dp" />
 
     <ImageView
-        android:id="@+id/god_yellow"
+        android:id="@+id/home_god_yellow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/god_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/god_pink"
+        app:layout_constraintEnd_toStartOf="@+id/home_god_pink"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/god_blue"
+        app:layout_constraintStart_toEndOf="@+id/home_god_blue"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="ContentDescription"
         tools:layout_width="110dp" />
 
     <ImageView
-        android:id="@+id/god_pink"
+        android:id="@+id/home_god_pink"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/god_pink"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/god_green"
+        app:layout_constraintEnd_toStartOf="@+id/home_god_green"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/god_yellow"
+        app:layout_constraintStart_toEndOf="@+id/home_god_yellow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="ContentDescription"
         tools:layout_width="120dp" />
 
     <ImageView
-        android:id="@+id/god_green"
+        android:id="@+id/home_god_green"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/god_green"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/god_blue"
+        app:layout_constraintEnd_toStartOf="@+id/home_god_blue"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/god_pink"
+        app:layout_constraintStart_toEndOf="@+id/home_god_pink"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="ContentDescription"
         tools:layout_width="100dp" />
+
+    <View
+        android:id="@+id/home_settings_gradient"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#94000000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_settings_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_r5_yellow_alert_bg_white_border"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+        <ImageView
+            android:id="@+id/home_close_setting"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintBottom_toBottomOf="@+id/home_setting_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/home_setting_text"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/home_setting_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/settings"
+            android:textAllCaps="true"
+            android:textColor="@color/md_white_1000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/home_volume_setting"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_outline_volume_up_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_setting_text"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="ContentDescription"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/home_language_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="@string/language"
+            android:textColor="@color/md_white_1000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/home_english_text"
+            app:layout_constraintTop_toBottomOf="@+id/home_volume_setting"
+            app:layout_constraintVertical_bias="0.05"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/home_english_text"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_r5_blue700_bg_black_border"
+            android:fontFamily="@font/quicksand_medium"
+            android:padding="16dp"
+            android:text="@string/english"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/md_white_1000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/home_volume_setting"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_language_text"
+            app:layout_constraintVertical_bias="0.0"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/home_hindi_text"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_r5_white_bg_black_border"
+            android:fontFamily="@font/quicksand_medium"
+            android:padding="16dp"
+            android:text="@string/hindi"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/md_black_1000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/home_volume_setting"
+            app:layout_constraintTop_toBottomOf="@+id/home_language_text"
+            app:layout_constraintVertical_bias="0.0"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

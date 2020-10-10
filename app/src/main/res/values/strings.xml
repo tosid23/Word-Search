@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Word Search</string>
+    <string name="word_search">Word Search</string>
+    <string name="indian_mythology_edition">Indian Mythology Edition</string>
+    <string name="play">Play</string>
+    <string name="ramayana">Ramayana</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="english" translatable="false">English</string>
+    <string name="hindi" translatable="false">"हिंदी "</string>
 </resources>

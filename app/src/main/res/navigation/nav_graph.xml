@@ -9,5 +9,20 @@
         android:id="@+id/homeFragment"
         android:name="com.kaus.wordsearch.features.home.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_levelsFragment"
+            app:destination="@id/levelsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelsFragment"
+        android:name="com.kaus.wordsearch.features.levels.LevelsFragment"
+        android:label="levels_fragment"
+        tools:layout="@layout/levels_fragment" />
 </navigation>
