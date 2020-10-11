@@ -44,6 +44,8 @@ class HomeFragment : BaseFragment() {
         setWidthOfGods()
         updateSettings()
 
+        viewModel.createPuzzleData()
+
     }
 
     private fun clickListeners() {

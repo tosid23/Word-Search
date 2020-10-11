@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kaus.wordsearch.R
 import com.kaus.wordsearch.features.levels.adapter.LevelsAdapter
-import com.kaus.wordsearch.features.levels.model.LevelsData
+import com.kaus.wordsearch.utilities.LANGUAGE_ENGLISH
 import kotlinx.android.synthetic.main.levels_fragment.*
 
 class LevelsFragment : Fragment() {
@@ -34,40 +34,34 @@ class LevelsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(LevelsViewModel::class.java)
         clickListeners()
-
-        setupRecyclerView()
-
-    }
-
-    @Suppress("DEPRECATION")
-    private fun setupRecyclerView() {
-        val displayMetrics = DisplayMetrics()
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            context?.display?.getRealMetrics(displayMetrics)
-        } else {
-            activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
-        }
-        val width = (displayMetrics.widthPixels / 2) - (displayMetrics.widthPixels / 8)
-
-        val levelsList = ArrayList<LevelsData>()
-        levelsList.add(LevelsData(1, "The Kings!", R.drawable.kings, 1, false))
-        levelsList.add(LevelsData(2, "The Queens!", R.drawable.queens, 2, false))
-        levelsList.add(LevelsData(3, "The Asuras!", R.drawable.asuras, 3, true))
-        levelsList.add(LevelsData(4, "The Rishis!", R.drawable.rishis, 4, false))
-
-        adapter = LevelsAdapter(levelsList, width)
-
-
-        val layoutManager = GridLayoutManager(requireContext(), 2)
-        levels_recycler.layoutManager = layoutManager
-        levels_recycler.adapter = adapter
-        adapter.notifyDataSetChanged()
+        observers()
+        viewModel.getPuzzleData(LANGUAGE_ENGLISH)
     }
 
     private fun clickListeners() {
         levels_back.setOnClickListener {
             it.findNavController().navigateUp()
         }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun observers() {
+        viewModel.puzzleLiveData.observe(viewLifecycleOwner, {
+            val displayMetrics = DisplayMetrics()
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                context?.display?.getRealMetrics(displayMetrics)
+            } else {
+                activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
+            }
+            val width = (displayMetrics.widthPixels / 2) - (displayMetrics.widthPixels / 8)
+
+            adapter = LevelsAdapter(it, width)
+
+            val layoutManager = GridLayoutManager(requireContext(), 2)
+            levels_recycler.layoutManager = layoutManager
+            levels_recycler.adapter = adapter
+            adapter.notifyDataSetChanged()
+        })
     }
 
 }

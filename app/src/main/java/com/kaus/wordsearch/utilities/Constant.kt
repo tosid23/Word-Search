@@ -6,3 +6,6 @@ package com.kaus.wordsearch.utilities
 
 // DB Constants
 const val DATABASE_NAME = "word-search-db"
+
+const val LANGUAGE_ENGLISH = "en"
+const val LANGUAGE_HINDI = "hi"

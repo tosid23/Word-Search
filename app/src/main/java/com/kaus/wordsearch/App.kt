@@ -2,7 +2,10 @@ package com.kaus.wordsearch
 
 import android.app.Application
 import android.content.ContextWrapper
+import androidx.room.Room
+import com.kaus.wordsearch.utilities.DATABASE_NAME
 import com.kaus.wordsearch.utilities.preferences.Prefs
+import com.kaus.wordsearch.utilities.room.RoomDb
 
 class App : Application() {
 
@@ -28,7 +31,7 @@ class App : Application() {
     }
 
     private fun initializeDB() {
-        //Room.databaseBuilder(applicationContext, AppDatabase::class.java, DATABASE_NAME).build()
+        Room.databaseBuilder(applicationContext, RoomDb::class.java, DATABASE_NAME).build()
     }
 
 }
