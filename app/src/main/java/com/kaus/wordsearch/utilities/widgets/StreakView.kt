@@ -1,4 +1,4 @@
-package com.kaus.wordsearch.widgets
+package com.kaus.wordsearch.utilities.widgets
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,8 +10,8 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import com.kaus.wordsearch.R
-import com.kaus.wordsearch.widgets.others.GridIndex
-import com.kaus.wordsearch.widgets.others.Vec2
+import com.kaus.wordsearch.utilities.widgets.others.GridIndex
+import com.kaus.wordsearch.utilities.widgets.others.Vec2
 import java.util.*
 import kotlin.math.acos
 import kotlin.math.max

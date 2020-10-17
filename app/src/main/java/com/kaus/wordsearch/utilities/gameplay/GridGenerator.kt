@@ -1,4 +1,4 @@
-package com.kaus.wordsearch.features.puzzle.gameplay
+package com.kaus.wordsearch.utilities.gameplay
 
 abstract class GridGenerator<InputType, OutputValue> {
     abstract fun setGrid(dataInput: InputType, grid: Array<CharArray>): OutputValue

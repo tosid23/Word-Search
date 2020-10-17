@@ -8,6 +8,7 @@ class GameData @JvmOverloads constructor(
     var name: String = "",
     var duration: Int = 0,
     var grid: Grid? = null,
+    var image: String = "",
     private val mUsedWords: MutableList<UsedWord> = ArrayList()
 ) {
     val usedWords: List<UsedWord>

@@ -66,7 +66,7 @@
         tools:itemCount="6"
         tools:listitem="@layout/row_words" />
 
-    <com.kaus.wordsearch.widgets.LetterBoard
+    <com.kaus.wordsearch.utilities.widgets.LetterBoard
         android:id="@+id/puzzle_letter_board"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,6 +87,89 @@
         app:lineColor="@android:color/transparent"
         app:snapToGrid="START_END"
         app:streakWidth="3dp" />
+
+    <View
+        android:id="@+id/puzzle_shadow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#8F000000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/puzzle_word_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:background="@drawable/rounded_r5_white_bg_yellow_alert_border"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/puzzle_word_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/god_blue" />
+
+        <TextView
+            android:id="@+id/puzzle_word_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/puzzle_word_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="@color/md_yellow_alert"
+            android:textSize="32sp"
+            tools:text="RAM" />
+
+        <TextView
+            android:id="@+id/puzzle_word_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/puzzle_word_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-light"
+            android:justificationMode="inter_word"
+            android:textColor="@color/md_black_1000"
+            android:textSize="18sp"
+            tools:ignore="UnusedAttribute"
+            tools:text="Ram was born to Kaushalya and Dasharatha in Ayodhya, the ruler of the Kingdom of Kosala. His siblings included Lakshmana, Bharata, and Shatrughna. He married Sita. Though born in a royal family, their life is described in the Hindu texts as one challenged by unexpected changes such as an exile into impoverished and difficult circumstances, ethical questions and moral dilemmas." />
+
+        <TextView
+            android:id="@+id/puzzle_word_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/puzzle_word_description"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_r5_green_a700_bg"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="SHARE WITH YOUR FIRENDS &amp; FAMILY"
+            android:textColor="@color/md_white_1000"
+            android:textSize="13sp"
+            app:drawableStartCompat="@drawable/ic_whatsapp"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

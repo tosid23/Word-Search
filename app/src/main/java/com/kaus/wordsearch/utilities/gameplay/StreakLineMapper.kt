@@ -1,7 +1,7 @@
-package com.kaus.wordsearch.features.puzzle.gameplay
+package com.kaus.wordsearch.utilities.gameplay
 
 import com.kaus.wordsearch.model.AnswerLine
-import com.kaus.wordsearch.widgets.StreakView
+import com.kaus.wordsearch.utilities.widgets.StreakView
 
 
 class StreakLineMapper : Mapper<AnswerLine, StreakView.StreakLine>() {

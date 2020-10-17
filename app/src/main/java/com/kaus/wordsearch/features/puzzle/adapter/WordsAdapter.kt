@@ -10,7 +10,7 @@ import com.kaus.wordsearch.R
 import com.kaus.wordsearch.model.UsedWord
 import kotlinx.android.synthetic.main.row_words.view.*
 
-class WordsAdapter(private val items: List<UsedWord>, private val width: Int) :
+class WordsAdapter(private val items: List<UsedWord>, val showWordDetails: (UsedWord) -> Unit) :
     RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
     lateinit var context: Context
@@ -39,6 +39,12 @@ class WordsAdapter(private val items: List<UsedWord>, private val width: Int) :
         } else {
             holder.wordText.background = null
             holder.wordText.setTextColor(ContextCompat.getColor(context, R.color.md_blue_700))
+        }
+
+        holder.wordText.setOnClickListener {
+            if (wordData.isAnswered) {
+                showWordDetails(wordData)
+            }
         }
     }
 

@@ -1,12 +1,12 @@
-package com.kaus.wordsearch.widgets
+package com.kaus.wordsearch.utilities.widgets
 
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import com.kaus.wordsearch.R
 import com.kaus.wordsearch.utilities.getIndexLength
-import com.kaus.wordsearch.widgets.others.Direction
-import com.kaus.wordsearch.widgets.others.GridIndex
+import com.kaus.wordsearch.utilities.widgets.others.Direction
+import com.kaus.wordsearch.utilities.widgets.others.GridIndex
 import java.util.*
 
 class LetterBoard : CenterLayout, Observer {

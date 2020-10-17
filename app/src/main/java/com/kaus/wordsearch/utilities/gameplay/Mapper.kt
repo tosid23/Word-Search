@@ -1,4 +1,4 @@
-package com.kaus.wordsearch.features.puzzle.gameplay
+package com.kaus.wordsearch.utilities.gameplay
 
 import java.util.*
 

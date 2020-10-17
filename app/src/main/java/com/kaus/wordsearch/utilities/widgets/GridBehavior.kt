@@ -1,4 +1,4 @@
-package com.kaus.wordsearch.widgets
+package com.kaus.wordsearch.utilities.widgets
 
 import android.content.Context
 import android.util.AttributeSet

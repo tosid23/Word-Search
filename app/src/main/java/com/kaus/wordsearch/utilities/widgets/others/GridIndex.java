@@ -1,4 +1,4 @@
-package com.kaus.wordsearch.widgets.others;
+package com.kaus.wordsearch.utilities.widgets.others;
 
 /**
  * Created by abdularis on 29/06/17.

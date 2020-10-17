@@ -1,4 +1,4 @@
-package com.kaus.wordsearch.widgets
+package com.kaus.wordsearch.utilities.widgets
 
 /**
  * Sample data adapter (for preview in android studio visual editor)

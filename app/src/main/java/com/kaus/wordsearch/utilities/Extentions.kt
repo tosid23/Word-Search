@@ -9,7 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.kaus.wordsearch.widgets.others.GridIndex
+import com.kaus.wordsearch.utilities.widgets.others.GridIndex
 import java.util.*
 import kotlin.math.abs
 import kotlin.math.max

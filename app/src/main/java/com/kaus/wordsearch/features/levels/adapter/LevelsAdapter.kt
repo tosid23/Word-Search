@@ -4,16 +4,18 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.text.buildSpannedString
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.Glide
 import com.kaus.wordsearch.R
 import com.kaus.wordsearch.features.levels.LevelsFragmentDirections
 import com.kaus.wordsearch.model.PuzzleData
 import com.kaus.wordsearch.utilities.hide
 import com.kaus.wordsearch.utilities.show
 import kotlinx.android.synthetic.main.row_levels.view.*
+
 
 class LevelsAdapter(private val items: List<PuzzleData>, private val width: Int) :
     RecyclerView.Adapter<LevelsAdapter.ViewHolder>() {
@@ -47,7 +49,17 @@ class LevelsAdapter(private val items: List<PuzzleData>, private val width: Int)
         holder.levelText.text = level
 
         holder.levelTitle.text = levelData.title
-        holder.levelImage.setImageDrawable(ContextCompat.getDrawable(context, levelData.image))
+
+        val circularProgressDrawable = CircularProgressDrawable(context)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+
+        Glide.with(context)
+            .load(levelData.image)
+            .placeholder(circularProgressDrawable)
+            .error(R.color.md_grey_500)
+            .into(holder.levelImage)
 
         if (levelData.is_completed) {
             holder.levelCompleted.show()

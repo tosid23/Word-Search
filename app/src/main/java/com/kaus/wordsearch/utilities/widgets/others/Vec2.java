@@ -1,4 +1,4 @@
-package com.kaus.wordsearch.widgets.others;
+package com.kaus.wordsearch.utilities.widgets.others;
 
 public class Vec2 {
 

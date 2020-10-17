@@ -1,9 +1,9 @@
-package com.kaus.wordsearch.features.puzzle.gameplay
+package com.kaus.wordsearch.utilities.gameplay
 
 import com.kaus.wordsearch.utilities.NULL_CHAR
 import com.kaus.wordsearch.utilities.fillNullCharWidthRandom
 import com.kaus.wordsearch.utilities.getRandomInt
-import com.kaus.wordsearch.widgets.others.Direction
+import com.kaus.wordsearch.utilities.widgets.others.Direction
 import java.util.*
 
 class StringListGridGenerator : GridGenerator<List<String>, List<String>>() {

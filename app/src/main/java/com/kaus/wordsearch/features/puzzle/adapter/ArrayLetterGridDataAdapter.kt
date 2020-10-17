@@ -1,6 +1,6 @@
 package com.kaus.wordsearch.features.puzzle.adapter
 
-import com.kaus.wordsearch.widgets.LetterGridDataAdapter
+import com.kaus.wordsearch.utilities.widgets.LetterGridDataAdapter
 
 
 /**

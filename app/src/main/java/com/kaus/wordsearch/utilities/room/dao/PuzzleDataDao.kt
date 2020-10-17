@@ -11,6 +11,9 @@ interface PuzzleDataDao : BaseDao<PuzzleData> {
     @Query("SELECT * from puzzle_data_table WHERE language = :language")
     suspend fun getAllPuzzlesByLanguage(language: String): List<PuzzleData>?
 
+    @Query("SELECT * from puzzle_data_table")
+    suspend fun getAllPuzzles(): List<PuzzleData>?
+
     @Query("SELECT * from puzzle_data_table WHERE id = :id")
     suspend fun getPuzzleById(id: Int): PuzzleData?
 }

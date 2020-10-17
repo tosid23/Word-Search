@@ -1,10 +1,8 @@
 package com.kaus.wordsearch.features.home
 
 import androidx.lifecycle.viewModelScope
-import com.kaus.wordsearch.R
-import com.kaus.wordsearch.model.PuzzleData
-import com.kaus.wordsearch.model.Word
-import com.kaus.wordsearch.utilities.LANGUAGE_ENGLISH
+import com.google.gson.Gson
+import com.kaus.wordsearch.model.PuzzleListData
 import com.kaus.wordsearch.utilities.base_classes.BaseViewModel
 import com.kaus.wordsearch.utilities.room.RoomDb
 import kotlinx.coroutines.launch
@@ -13,84 +11,11 @@ class HomeViewModel : BaseViewModel() {
 
     fun createPuzzleData() {
         viewModelScope.launch {
-            val theKingsEnWordList = ArrayList<Word>()
-            theKingsEnWordList.add(Word(id = 11, word = "RAM", is_answered = false))
-            theKingsEnWordList.add(Word(id = 12, word = "LAKSHMAN", is_answered = false))
-            theKingsEnWordList.add(Word(id = 13, word = "BHARAT", is_answered = false))
-            theKingsEnWordList.add(Word(id = 14, word = "JANAK", is_answered = false))
-            theKingsEnWordList.add(Word(id = 15, word = "RAVANA", is_answered = false))
-            theKingsEnWordList.add(Word(id = 16, word = "NAKUL", is_answered = false))
-            val savedKingsEn = RoomDb.getInstance().puzzleDataDao().getPuzzleById(1)
-            var isKingsDone = false
-            savedKingsEn?.let { a -> isKingsDone = a.is_completed }
-            val theKingsEn = PuzzleData(
-                id = 1, level = 1, title = "The Kings!", language = LANGUAGE_ENGLISH,
-                wordsList = theKingsEnWordList, is_completed = isKingsDone, image = R.drawable.kings
-            )
-            RoomDb.getInstance().puzzleDataDao().insertData(theKingsEn)
 
-            val theQueensEnWordList = ArrayList<Word>()
-            theQueensEnWordList.add(Word(id = 21, word = "SITA", is_answered = false))
-            theQueensEnWordList.add(Word(id = 22, word = "KAUSALYA", is_answered = false))
-            theQueensEnWordList.add(Word(id = 23, word = "SUMITRA", is_answered = false))
-            theQueensEnWordList.add(Word(id = 24, word = "KAIKAYI", is_answered = false))
-            theQueensEnWordList.add(Word(id = 25, word = "MANDAVI", is_answered = false))
-            theQueensEnWordList.add(Word(id = 26, word = "MANDODARI", is_answered = false))
-            val savedQueensEn = RoomDb.getInstance().puzzleDataDao().getPuzzleById(1)
-            var isQueensDone = false
-            savedQueensEn?.let { a -> isQueensDone = a.is_completed }
-            val theQueensEn = PuzzleData(
-                id = 2,
-                level = 2,
-                title = "The Queens!",
-                language = LANGUAGE_ENGLISH,
-                wordsList = theQueensEnWordList,
-                is_completed = isQueensDone,
-                image = R.drawable.queens
-            )
-            RoomDb.getInstance().puzzleDataDao().insertData(theQueensEn)
-
-            val theAsurasEnWordList = ArrayList<Word>()
-            theAsurasEnWordList.add(Word(id = 31, word = "RAVANA", is_answered = false))
-            theAsurasEnWordList.add(Word(id = 32, word = "INDRAJIT", is_answered = false))
-            theAsurasEnWordList.add(Word(id = 33, word = "MAARICH", is_answered = false))
-            theAsurasEnWordList.add(Word(id = 34, word = "BAALI", is_answered = false))
-            theAsurasEnWordList.add(Word(id = 35, word = "VIRADHA", is_answered = false))
-            theAsurasEnWordList.add(Word(id = 36, word = "TATAKA", is_answered = false))
-            val savedAsurasEn = RoomDb.getInstance().puzzleDataDao().getPuzzleById(1)
-            var isAsurasDone = false
-            savedAsurasEn?.let { a -> isAsurasDone = a.is_completed }
-            val theAsurasEn = PuzzleData(
-                id = 3,
-                title = "The Asuras!",
-                language = LANGUAGE_ENGLISH,
-                wordsList = theAsurasEnWordList,
-                level = 3,
-                is_completed = isAsurasDone,
-                image = R.drawable.asuras
-            )
-            RoomDb.getInstance().puzzleDataDao().insertData(theAsurasEn)
-
-            val theRishisEnWordList = ArrayList<Word>()
-            theRishisEnWordList.add(Word(id = 41, word = "AGASTYA", is_answered = false))
-            theRishisEnWordList.add(Word(id = 42, word = "ATRI", is_answered = false))
-            theRishisEnWordList.add(Word(id = 43, word = "VAKMIKI", is_answered = false))
-            theRishisEnWordList.add(Word(id = 44, word = "VISHWAMITRA", is_answered = false))
-            theRishisEnWordList.add(Word(id = 45, word = "VASHISTHA", is_answered = false))
-            theRishisEnWordList.add(Word(id = 46, word = "ANASUYA", is_answered = false))
-            val savedRishisEn = RoomDb.getInstance().puzzleDataDao().getPuzzleById(1)
-            var isRishisDone = false
-            savedRishisEn?.let { a -> isRishisDone = a.is_completed }
-            val theRishisEn = PuzzleData(
-                id = 4,
-                title = "The Rishis!",
-                language = LANGUAGE_ENGLISH,
-                wordsList = theRishisEnWordList,
-                level = 4,
-                is_completed = isRishisDone,
-                image = R.drawable.rishis
-            )
-            RoomDb.getInstance().puzzleDataDao().insertData(theRishisEn)
+            val jsonData =
+                "{\"puzzleList\":[{\"id\":1,\"image\":\"https://res.cloudinary.com/dmsh6wa6f/image/upload/v1602914779/Word%20Search/kings.png\",\"is_completed\":false,\"language\":\"en\",\"level\":1,\"title\":\"The Kings!\",\"wordsList\":[{\"id\":11,\"is_answered\":false,\"word\":\"RAM\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":12,\"is_answered\":false,\"word\":\"LAKSHMAN\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":13,\"is_answered\":false,\"word\":\"BHARAT\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":14,\"is_answered\":false,\"word\":\"JANAK\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":15,\"is_answered\":false,\"word\":\"RAVANA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":16,\"is_answered\":false,\"word\":\"NAKUL\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"}]},{\"id\":2,\"image\":\"https://res.cloudinary.com/dmsh6wa6f/image/upload/v1602914780/Word%20Search/queens.png\",\"is_completed\":false,\"language\":\"en\",\"level\":2,\"title\":\"The Queens!\",\"wordsList\":[{\"id\":21,\"is_answered\":false,\"word\":\"SITA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":22,\"is_answered\":false,\"word\":\"KAUSALYA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":23,\"is_answered\":false,\"word\":\"SUMITRA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":24,\"is_answered\":false,\"word\":\"KAIKAYI\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":25,\"is_answered\":false,\"word\":\"MANDAVI\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":26,\"is_answered\":false,\"word\":\"MANDODARI\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"}]},{\"id\":3,\"image\":\"https://res.cloudinary.com/dmsh6wa6f/image/upload/v1602914780/Word%20Search/asuras.png\",\"is_completed\":false,\"language\":\"en\",\"level\":3,\"title\":\"The Asuras!\",\"wordsList\":[{\"id\":31,\"is_answered\":false,\"word\":\"RAVANA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":32,\"is_answered\":false,\"word\":\"INDRAJIT\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":33,\"is_answered\":false,\"word\":\"MAARICH\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":34,\"is_answered\":false,\"word\":\"BAALI\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":35,\"is_answered\":false,\"word\":\"VIRADHA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":36,\"is_answered\":false,\"word\":\"TATAKA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"}]},{\"id\":4,\"image\":\"https://res.cloudinary.com/dmsh6wa6f/image/upload/v1602914780/Word%20Search/rishis.png\",\"is_completed\":false,\"language\":\"en\",\"level\":4,\"title\":\"The Rishis!\",\"wordsList\":[{\"id\":41,\"is_answered\":false,\"word\":\"AGASTYA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":42,\"is_answered\":false,\"word\":\"ATRI\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":43,\"is_answered\":false,\"word\":\"VAKMIKI\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":44,\"is_answered\":false,\"word\":\"VISHWAMITRA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":45,\"is_answered\":false,\"word\":\"VASHISTHA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"},{\"id\":46,\"is_answered\":false,\"word\":\"ANASUYA\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"}]}]}"
+            val puzzles = Gson().fromJson(jsonData, PuzzleListData::class.java)
+            RoomDb.getInstance().puzzleDataDao().insertDataList(puzzles.puzzleList)
 
         }
     }

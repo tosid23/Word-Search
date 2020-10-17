@@ -1,4 +1,4 @@
-package com.kaus.wordsearch.features.puzzle.gameplay
+package com.kaus.wordsearch.utilities.gameplay
 
 import com.kaus.wordsearch.model.*
 import com.kaus.wordsearch.utilities.getRandomIntRange
@@ -11,7 +11,8 @@ class GameDataCreator {
     fun newGameData(
         words: MutableList<Word>,
         rowCount: Int, colCount: Int,
-        name: String?
+        name: String?,
+        image: String
     ): GameData {
         val gameData = GameData()
         randomizeList(words)
@@ -20,11 +21,11 @@ class GameDataCreator {
         val usedStrings = StringListGridGenerator()
             .setGrid(getStringListFromWord(words, 100, maxCharCount), grid.getArray())
         gameData.addUsedWords(buildUsedWordFromString(usedStrings))
+        gameData.image = image
         gameData.grid = grid
         if (name == null || name.isEmpty()) {
-            val name1 = "Puzzle " +
-                    SimpleDateFormat("HH.mm.ss", Locale.ENGLISH)
-                        .format(Date(System.currentTimeMillis()))
+            val name1 = "Puzzle " + SimpleDateFormat("HH.mm.ss", Locale.ENGLISH)
+                .format(Date(System.currentTimeMillis()))
             gameData.name = name1
         } else {
             gameData.name = name
@@ -44,7 +45,7 @@ class GameDataCreator {
                 mysteryWordCount--
             }
             val uw = UsedWord(
-                word = Word(-1, strings[i], false),
+                word = Word(-1, strings[i], false, ""),
                 answerLine = AnswerLine(),
                 isAnswered = false,
                 isMystery = isMystery,
