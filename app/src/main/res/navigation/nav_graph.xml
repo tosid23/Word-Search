@@ -13,10 +13,10 @@
         <action
             android:id="@+id/action_homeFragment_to_levelsFragment"
             app:destination="@id/levelsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/levelsFragment"
@@ -26,10 +26,10 @@
         <action
             android:id="@+id/action_levelsFragment_to_puzzleFragment"
             app:destination="@id/puzzleFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/puzzleFragment"
@@ -40,5 +40,29 @@
             android:name="puzzle_id"
             android:defaultValue="1"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_puzzleFragment_to_completedFragment"
+            app:destination="@id/completedFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/completedFragment"
+        android:name="com.kaus.wordsearch.features.completed.CompletedFragment"
+        android:label="completed_fragment"
+        tools:layout="@layout/completed_fragment">
+        <argument
+            android:name="puzzle_id"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_completedFragment_to_puzzleFragment"
+            app:destination="@id/puzzleFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
 </navigation>

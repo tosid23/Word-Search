@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -85,7 +85,9 @@ class PuzzleFragment : Fragment() {
         })
 
         viewModel.isGameOverLiveData.observe(viewLifecycleOwner, {
-            Toast.makeText(requireContext(), "Finished", Toast.LENGTH_SHORT).show()
+            val action =
+                PuzzleFragmentDirections.actionPuzzleFragmentToCompletedFragment(args.puzzleId)
+            findNavController().navigate(action)
         })
 
         viewModel.wordDetailsLiveData.observe(viewLifecycleOwner, {
@@ -98,6 +100,8 @@ class PuzzleFragment : Fragment() {
 
     private fun clickListeners() {
         puzzle_back.setOnClickListener {
+            findNavController().popBackStack(R.id.completedFragment, false)
+            findNavController().popBackStack(R.id.puzzleFragment, false)
             it.findNavController().navigateUp()
         }
 
@@ -112,7 +116,12 @@ class PuzzleFragment : Fragment() {
             }
 
             override fun onSelectionEnd(streakLine: StreakView.StreakLine, str: String) {
-                viewModel.answerWord(str, STREAK_LINE_MAPPER.revMap(streakLine), true)
+                viewModel.answerWord(
+                    str,
+                    STREAK_LINE_MAPPER.revMap(streakLine),
+                    true,
+                    args.puzzleId
+                )
             }
         }
         )

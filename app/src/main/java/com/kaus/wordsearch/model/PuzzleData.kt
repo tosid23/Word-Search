@@ -14,5 +14,5 @@ data class PuzzleData(
     val image: String,
     val level: Int,
     val wordsList: List<Word>,
-    val is_completed: Boolean
+    var is_completed: Boolean
 ) : Parcelable

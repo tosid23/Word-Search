@@ -1,6 +1,5 @@
 package com.kaus.wordsearch.features.puzzle
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.kaus.wordsearch.model.AnswerLine
@@ -25,7 +24,6 @@ class PuzzleViewModel : BaseViewModel() {
 
             val puzzleData = RoomDb.getInstance().puzzleDataDao().getPuzzleById(puzzleId)
             puzzleData?.let {
-                Log.e("AAA", "Puzzle Data : $it")
                 val gameData = gameDataCreator.newGameData(
                     colCount = 12,
                     rowCount = 12,
@@ -52,16 +50,29 @@ class PuzzleViewModel : BaseViewModel() {
         }
     }
 
-    fun answerWord(answerStr: String, answerLine: AnswerLine, reverseMatching: Boolean) {
-        val correctWord: UsedWord? =
-            gameLiveData.value?.markWordAsAnswered(answerStr, answerLine, reverseMatching)
-        answeredWordLiveData.postValue(correctWord)
-        val correct = correctWord != null
-        val isFinished = gameLiveData.value?.isFinished
-        if (correct) {
-            isFinished?.let { finished ->
-                if (finished) {
-                    isGameOverLiveData.postValue(true)
+    fun answerWord(
+        answerStr: String,
+        answerLine: AnswerLine,
+        reverseMatching: Boolean,
+        puzzleId: Int
+    ) {
+        viewModelScope.launch {
+            val correctWord: UsedWord? =
+                gameLiveData.value?.markWordAsAnswered(answerStr, answerLine, reverseMatching)
+            answeredWordLiveData.postValue(correctWord)
+            val correct = correctWord != null
+            val isFinished = gameLiveData.value?.isFinished
+            if (correct) {
+                isFinished?.let { finished ->
+                    if (finished) {
+                        val puzzleData =
+                            RoomDb.getInstance().puzzleDataDao().getPuzzleById(puzzleId)
+                        puzzleData?.let { pd ->
+                            pd.is_completed = true
+                            RoomDb.getInstance().puzzleDataDao().updateData(pd)
+                        }
+                        isGameOverLiveData.postValue(true)
+                    }
                 }
             }
         }
