@@ -11,7 +11,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kaus.wordsearch.R
 import com.kaus.wordsearch.features.levels.adapter.LevelsAdapter
-import com.kaus.wordsearch.utilities.LANGUAGE_ENGLISH
+import com.kaus.wordsearch.utilities.preferences.DEFAULT_LANGUAGE
+import com.kaus.wordsearch.utilities.preferences.Prefs
 import kotlinx.android.synthetic.main.levels_fragment.*
 
 class LevelsFragment : Fragment() {
@@ -35,7 +36,8 @@ class LevelsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(LevelsViewModel::class.java)
         clickListeners()
         observers()
-        viewModel.getPuzzleData(LANGUAGE_ENGLISH)
+
+        viewModel.getPuzzleData(Prefs.getString(DEFAULT_LANGUAGE))
     }
 
     private fun clickListeners() {

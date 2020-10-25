@@ -44,7 +44,8 @@ class LevelsAdapter(private val items: List<PuzzleData>, private val width: Int)
         val levelData = items[position]
 
         val level = buildSpannedString {
-            append("Level ${levelData.level}")
+            append(context.getString(R.string.level))
+            append(" ${levelData.level}")
         }
         holder.levelText.text = level
 

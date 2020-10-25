@@ -149,13 +149,56 @@
             tools:ignore="UnusedAttribute"
             tools:text="Ram was born to Kaushalya and Dasharatha in Ayodhya, the ruler of the Kingdom of Kosala. His siblings included Lakshmana, Bharata, and Shatrughna. He married Sita. Though born in a royal family, their life is described in the Hindu texts as one challenged by unexpected changes such as an exile into impoverished and difficult circumstances, ethical questions and moral dilemmas." />
 
+        <ImageView
+            android:id="@+id/puzzle_google_play_image"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_below="@+id/puzzle_word_description"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/google_play"
+            android:visibility="visible"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/puzzle_word_search_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/puzzle_word_description"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/puzzle_google_play_image"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/word_search"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/md_blue_700"
+            android:textSize="24sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/puzzle_indian_mythology_edition_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/puzzle_word_search_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/puzzle_google_play_image"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/indian_mythology_edition"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/md_cyan_400"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
         <TextView
             android:id="@+id/puzzle_word_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/puzzle_word_description"
+            android:layout_below="@+id/puzzle_indian_mythology_edition_text"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/rounded_r5_green_a700_bg"
             android:drawablePadding="12dp"
             android:fontFamily="@font/quicksand_medium"

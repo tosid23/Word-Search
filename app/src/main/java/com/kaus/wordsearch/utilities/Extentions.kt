@@ -9,6 +9,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.kaus.wordsearch.utilities.preferences.DEFAULT_LANGUAGE
+import com.kaus.wordsearch.utilities.preferences.Prefs
 import com.kaus.wordsearch.utilities.widgets.others.GridIndex
 import java.util.*
 import kotlin.math.abs
@@ -91,8 +93,17 @@ private val sRand = Random()
 const val NULL_CHAR = '\u0000'
 
 fun getRandomChar(): Char {
-    // ASCII A = 65 - Z = 90
-    return getRandomIntRange(65, 90).toChar()
+    // ASCII A = 65 - Z = 90 : English
+    var startRange = 65
+    var endRange = 90
+
+    if (Prefs.getString(DEFAULT_LANGUAGE) == "hi") {
+        // ASCII 2309 - 2360 : Hindi
+        startRange = 2309
+        endRange = 2360
+    }
+
+    return getRandomIntRange(startRange, endRange).toChar()
 }
 
 fun fillNullCharWidthRandom(gridArr: Array<CharArray>) {

@@ -1,6 +1,11 @@
 package com.kaus.wordsearch.features.puzzle
 
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +29,8 @@ import com.kaus.wordsearch.utilities.widgets.LetterBoard
 import com.kaus.wordsearch.utilities.widgets.StreakView
 import kotlinx.android.synthetic.main.puzzle_fragment.*
 
+
+@Suppress("DEPRECATION")
 class PuzzleFragment : Fragment() {
 
     companion object {
@@ -136,7 +143,32 @@ class PuzzleFragment : Fragment() {
         }
 
         puzzle_word_share.setOnClickListener {
+            puzzle_word_share.hide(true)
+            val b = Bitmap.createBitmap(
+                puzzle_word_details.width,
+                puzzle_word_details.height,
+                Bitmap.Config.ARGB_8888
+            )
+            val c = Canvas(b)
+            puzzle_word_details.draw(c)
 
+            val pathofBmp: String =
+                MediaStore.Images.Media.insertImage(
+                    requireActivity().contentResolver,
+                    b,
+                    "title",
+                    null
+                )
+            val bmpUri: Uri = Uri.parse(pathofBmp)
+
+
+            val waIntent = Intent(Intent.ACTION_SEND)
+            waIntent.type = "image/*"
+            waIntent.putExtra(Intent.EXTRA_STREAM, bmpUri)
+            waIntent.putExtra(Intent.EXTRA_TEXT, "Test")
+            requireContext().startActivity(Intent.createChooser(waIntent, "Share with"))
+
+            puzzle_word_share.show()
         }
     }
 
